@@ -2,41 +2,70 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Harry Potter Magical Design System - All colors MUST be HSL */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Dark magical background */
+    --background: 220 20% 8%;
+    --foreground: 45 100% 92%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Magical card backgrounds */
+    --card: 220 15% 12%;
+    --card-foreground: 45 90% 88%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 220 15% 12%;
+    --popover-foreground: 45 90% 88%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Gryffindor gold as primary */
+    --primary: 45 100% 55%;
+    --primary-foreground: 220 20% 8%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Magical silver/blue secondary */
+    --secondary: 220 25% 15%;
+    --secondary-foreground: 45 100% 92%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted magical tones */
+    --muted: 220 20% 18%;
+    --muted-foreground: 45 60% 70%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Emerald accent (Slytherin) */
+    --accent: 150 80% 40%;
+    --accent-foreground: 45 100% 95%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Destructive red magic */
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 45 100% 95%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Magical borders */
+    --border: 220 25% 25%;
+    --input: 220 25% 20%;
+    --ring: 45 100% 55%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Custom magical colors */
+    --fire: 15 100% 55%;
+    --fire-glow: 25 100% 65%;
+    --magic-purple: 270 60% 50%;
+    --magic-blue: 220 80% 60%;
+    --parchment: 45 40% 85%;
+    --dark-magic: 270 30% 15%;
+    
+    /* Magical gradients */
+    --gradient-fire: linear-gradient(135deg, hsl(15 100% 55%), hsl(25 100% 65%), hsl(45 100% 70%));
+    --gradient-magic: linear-gradient(135deg, hsl(270 60% 50%), hsl(220 80% 60%));
+    --gradient-dark: linear-gradient(135deg, hsl(220 20% 8%), hsl(270 30% 15%));
+    --gradient-parchment: linear-gradient(135deg, hsl(45 40% 85%), hsl(35 35% 75%));
+    
+    /* Magical shadows */
+    --shadow-fire: 0 0 30px hsl(15 100% 55% / 0.5);
+    --shadow-magic: 0 0 20px hsl(270 60% 50% / 0.3);
+    --shadow-glow: 0 10px 40px hsl(45 100% 55% / 0.2);
+
+    /* Animations */
+    --transition-magic: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.3s ease-out;
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +130,88 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background: var(--gradient-dark);
+    min-height: 100vh;
+  }
+}
+
+/* Magical animations and effects */
+@layer components {
+  .fire-effect {
+    background: var(--gradient-fire);
+    animation: fire-flicker 2s ease-in-out infinite alternate;
+    box-shadow: var(--shadow-fire);
+  }
+  
+  .magic-glow {
+    box-shadow: var(--shadow-magic);
+    animation: magic-pulse 3s ease-in-out infinite;
+  }
+  
+  .parchment {
+    background: var(--gradient-parchment);
+    color: hsl(220 20% 8%);
+    box-shadow: 0 4px 20px hsl(45 40% 85% / 0.3);
+  }
+  
+  .floating {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .fade-in-up {
+    animation: fade-in-up 1s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  .magic-text {
+    background: linear-gradient(135deg, hsl(45 100% 70%), hsl(15 100% 60%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: text-shimmer 3s ease-in-out infinite;
+  }
+}
+
+@keyframes fire-flicker {
+  0%, 100% { 
+    box-shadow: 0 0 20px hsl(15 100% 55% / 0.5), 0 0 40px hsl(15 100% 55% / 0.3);
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 0 30px hsl(25 100% 65% / 0.7), 0 0 60px hsl(25 100% 65% / 0.4);
+    transform: scale(1.05);
+  }
+}
+
+@keyframes magic-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 15px hsl(270 60% 50% / 0.3);
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 0 25px hsl(270 60% 50% / 0.5), 0 0 35px hsl(220 80% 60% / 0.3);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes fade-in-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes text-shimmer {
+  0%, 100% { 
+    background-position: 0% 50%;
+  }
+  50% { 
+    background-position: 100% 50%;
   }
 }

@@ -52,6 +52,13 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				// Magical color extensions
+				fire: 'hsl(var(--fire))',
+				'fire-glow': 'hsl(var(--fire-glow))',
+				'magic-purple': 'hsl(var(--magic-purple))',
+				'magic-blue': 'hsl(var(--magic-blue))',
+				parchment: 'hsl(var(--parchment))',
+				'dark-magic': 'hsl(var(--dark-magic))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
