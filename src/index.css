@@ -165,11 +165,28 @@
   }
   
   .magic-text {
-    background: linear-gradient(135deg, hsl(45 100% 70%), hsl(15 100% 60%));
+    background: linear-gradient(135deg, hsl(45 100% 70%), hsl(15 100% 60%), hsl(270 60% 70%));
+    background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: text-shimmer 3s ease-in-out infinite;
+    animation: text-shimmer 4s ease-in-out infinite;
+  }
+
+  .goblet-container {
+    animation: goblet-magic 8s ease-in-out infinite;
+  }
+
+  .mystical-particles {
+    animation: particle-float 15s linear infinite;
+  }
+
+  .arcane-symbol {
+    animation: symbol-rotate 20s linear infinite;
+  }
+
+  .magical-aura {
+    animation: aura-pulse 6s ease-in-out infinite;
   }
 }
 
@@ -213,5 +230,67 @@
   }
   50% { 
     background-position: 100% 50%;
+  }
+}
+
+@keyframes goblet-magic {
+  0%, 100% { 
+    transform: translateY(0px) scale(1);
+    filter: brightness(100%) contrast(100%);
+  }
+  25% { 
+    transform: translateY(-5px) scale(1.02);
+    filter: brightness(110%) contrast(110%);
+  }
+  50% { 
+    transform: translateY(-8px) scale(1.05);
+    filter: brightness(120%) contrast(120%);
+  }
+  75% { 
+    transform: translateY(-3px) scale(1.01);
+    filter: brightness(105%) contrast(105%);
+  }
+}
+
+@keyframes particle-float {
+  0% { 
+    transform: translateY(100vh) translateX(0px) rotate(0deg);
+    opacity: 0;
+  }
+  10% { 
+    opacity: 1;
+  }
+  90% { 
+    opacity: 1;
+  }
+  100% { 
+    transform: translateY(-10vh) translateX(50px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes symbol-rotate {
+  0% { 
+    transform: rotate(0deg) scale(1);
+    opacity: 0.3;
+  }
+  50% { 
+    transform: rotate(180deg) scale(1.1);
+    opacity: 0.6;
+  }
+  100% { 
+    transform: rotate(360deg) scale(1);
+    opacity: 0.3;
+  }
+}
+
+@keyframes aura-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px hsl(270 60% 50% / 0.3), 0 0 40px hsl(270 60% 50% / 0.1);
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 0 30px hsl(270 60% 50% / 0.5), 0 0 60px hsl(270 60% 50% / 0.2), 0 0 80px hsl(45 100% 55% / 0.1);
+    transform: scale(1.02);
   }
 }

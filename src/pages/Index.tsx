@@ -33,12 +33,54 @@ const Index = () => {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* Background magical effects */}
+      {/* Enhanced mystical background effects */}
       <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-10 left-10 w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-        <div className="absolute top-20 right-20 w-1 h-1 bg-fire rounded-full animate-pulse delay-300"></div>
-        <div className="absolute bottom-20 left-20 w-1.5 h-1.5 bg-magic-purple rounded-full animate-pulse delay-700"></div>
-        <div className="absolute bottom-10 right-10 w-2 h-2 bg-accent rounded-full animate-pulse delay-500"></div>
+        {/* Floating mystical particles */}
+        {[...Array(60)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute mystical-particles"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${100 + Math.random() * 20}%`,
+              animationDelay: `${Math.random() * 15}s`,
+              animationDuration: `${10 + Math.random() * 10}s`
+            }}
+          >
+            <div 
+              className={`w-1 h-1 rounded-full ${
+                i % 4 === 0 ? 'bg-primary' :
+                i % 4 === 1 ? 'bg-fire' :
+                i % 4 === 2 ? 'bg-magic-purple' : 'bg-accent'
+              }`} 
+            />
+          </div>
+        ))}
+        
+        {/* Arcane symbols floating */}
+        {['⚡', '🔮', '✨', '🌟', '⭐', '💫', '🌙', '☄️'].map((symbol, i) => (
+          <div
+            key={symbol}
+            className="absolute arcane-symbol text-2xl opacity-20"
+            style={{
+              left: `${10 + (i * 12)}%`,
+              top: `${20 + (i % 3) * 25}%`,
+              animationDelay: `${i * 2.5}s`,
+              color: i % 2 === 0 ? 'hsl(var(--primary))' : 'hsl(var(--fire))'
+            }}
+          >
+            {symbol}
+          </div>
+        ))}
+        
+        {/* Magical energy swirls */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-magic-purple/5 rounded-full blur-3xl magical-aura" />
+          <div className="absolute bottom-1/3 right-1/3 w-80 h-80 bg-fire/5 rounded-full blur-3xl magical-aura" 
+               style={{ animationDelay: '3s' }} />
+          <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-primary/5 rounded-full blur-3xl magical-aura" 
+               style={{ animationDelay: '6s' }} />
+        </div>
       </div>
 
       {/* Stage Components */}
